@@ -1,10 +1,13 @@
+import { Container } from 'react-bootstrap';
 import './App.css';
 import UsersComponent from './comps/UsersComponent';
 
 function App() {
 	return (
 		<div className='App'>
-			<UsersComponent></UsersComponent>
+			<Container>
+				<UsersComponent></UsersComponent>
+			</Container>
 		</div>
 	);
 }
