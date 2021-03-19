@@ -17,7 +17,7 @@ const getUsersApi = async () => {
 
 function* fetchUsers(action) {
     try {
-        const users = yield call(await getUsersApi())
+        const users = yield call(getUsersApi())
         yield put({
             type: 'GET_USERS_SUCCESS',
             users : users
