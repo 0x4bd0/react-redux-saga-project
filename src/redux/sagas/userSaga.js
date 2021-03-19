@@ -6,22 +6,28 @@ const options = {
 	'content-Type': 'application/json',
 };
 
-const getUsersApi = async () => {
-	try {
-		let tmp = await fetch(URL);
-		return tmp;
-	} catch (err) {
-		throw err;
-	}
+const getUsersApi = () => {
+	return fetch(URL)
+		.then((data) => data.json())
+		.catch((err) => err);
 };
 
 function* fetchUsers(action) {
     try {
-        const users = yield call(getUsersApi())
-        yield put({
+        const users = yield call(getUsersApi)
+        console.log(users)
+        if (users.length > 0) {
+            yield put({
             type: 'GET_USERS_SUCCESS',
             users : users
         })
+        } else {
+                    yield put({
+            type: 'GET_USERS_FAIL',
+            message : 'Fetching users failed.'
+        })
+        }
+
     } catch (err) {
         yield put({
             type: 'GET_USERS_FAIL',

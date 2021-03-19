@@ -5,68 +5,19 @@ import UserCard from './UserCard';
 
 const UsersComponent = () => {
 	const dispatch = useDispatch();
-    const state = useSelector((state) => state.users);
+    const { users, error, loading } = useSelector((state) => state.users);
     
 	useEffect(() => {
-		dispatch(
-			getUsers([
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-				{
-					id: 1,
-					name: 'zmar',
-				},
-			])
-		);
+		dispatch(getUsers());
 	}, []);
 
-    return state.length > 0 && state.map((item) => UserCard(item));
+    return (
+			<>
+				{loading && <p className='loading'>Loading ...</p>}
+				{users.length > 0 && users.map((item) => UserCard(item))}
+				{error && <p className='error'>{error}</p>}
+			</>
+		);
     };
 
 export default UsersComponent;

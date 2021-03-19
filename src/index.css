@@ -27,3 +27,13 @@ code {
   flex : 1;
   min-width: 300px  !important
 }
+
+.error {
+      color: red;
+    margin: 0 auto;
+}
+
+.loading {
+      color: black;
+    margin: 0 auto;
+}

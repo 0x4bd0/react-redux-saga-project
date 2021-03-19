@@ -1,8 +1,8 @@
-import * as actionType from '../actionTypes/index';
+import * as sagaType from '../sagas/sagaType';
 
 export const getUsers = (users) => {
-    return {
-        type: actionType.GET_USERS,
-        payload: users,
-    }
-}
+	return {
+		type: sagaType.REQUESTED_GET_USERS,
+		payload: users,
+	};
+};
